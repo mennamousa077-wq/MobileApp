@@ -1,0 +1,577 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الإدارة - لوحة التحكم الرئيسية | سنترال وتوكيل الموبايل</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'deep-navy': '#0F172A',
+        'navy-surface': '#1E293B',
+        'royal-blue': '#2563EB',
+        'royal-blue-bright': '#3B82F6',
+        'slate-canvas': '#F8FAFC',
+        'primary': '#2563EB',
+        'on-primary': '#FFFFFF',
+        'primary-container': '#EEF0FF',
+        'on-primary-container': '#002A78',
+        'secondary': '#0F172A',
+        'on-secondary': '#FFFFFF',
+        'secondary-container': '#1E293B',
+        'on-secondary-container': '#F8FAFC',
+        'surface': '#F8FAFC',
+        'on-surface': '#0F172A',
+        'surface-container-lowest': '#FFFFFF',
+        'surface-container-low': '#F1F5F9',
+        'surface-container': '#E2E8F0',
+        'on-surface-variant': '#475569',
+        'outline': '#CBD5E1',
+        'outline-variant': '#E2E8F0',
+        'success': '#047857',
+        'on-success': '#FFFFFF',
+        'success-container': '#ECFDF5',
+        'on-success-container': '#065F46',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FFFBEB',
+        'on-warning-container': '#92400E',
+        'error': '#BA1A1A',
+        'on-error': '#FFFFFF',
+        'error-container': '#FFEDEA',
+        'on-error-container': '#93000A',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '32px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Cairo"', 'sans-serif'],
+        'headline': ['"Cairo"', 'sans-serif'],
+        'title': ['"Cairo"', 'sans-serif'],
+        'body': ['"Cairo"', 'sans-serif'],
+        'label': ['"Cairo"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '36px', letterSpacing: '0px', fontWeight: '700' }],
+        'headline-lg': ['26px', { lineHeight: '34px', letterSpacing: '0px', fontWeight: '700' }],
+        'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'headline-sm': ['18px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-md': ['14px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '500' }],
+        'body-sm': ['13px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '600' }],
+        'mono-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'mono-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '140ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-surface text-on-surface font-body">
+  <div class="min-h-[1024px] flex bg-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+    <!-- Persistent RTL Right-Aligned Sidebar -->
+    <aside class="w-72 shrink-0 bg-deep-navy text-on-secondary flex flex-col min-h-[1024px] border-l border-navy-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+      <div class="px-gutter-lg py-gutter-lg border-b border-navy-surface flex items-center gap-gutter-md">
+        <div class="w-10 h-10 rounded bg-primary flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-on-primary text-headline-md" aria-hidden="true">point_of_sale</span>
+        </div>
+        <div class="min-w-0">
+          <p class="font-headline text-title-md text-on-secondary" data-design-text-token="title-md">سنترال الموبايل</p>
+          <p class="font-body text-label-sm text-outline" data-design-text-token="label-sm">نظام نقاط البيع والمخزون</p>
+        </div>
+      </div>
+
+      <nav class="flex-1 p-gutter-md flex flex-col gap-gutter-xs" aria-label="القائمة الرئيسية">
+        <a href="../management-dashboard/ManagementDashboard.html" class="flex items-center gap-gutter-md px-gutter-md py-gutter-sm rounded bg-primary text-on-primary font-label text-label-lg transition-colors duration-state-change">
+          <span class="material-symbols-outlined text-title-md" aria-hidden="true">dashboard</span>
+          <span data-design-text-token="label-lg">الإدارة</span>
+        </a>
+        <a href="../vodafone-cash/VodafoneCash18Lines.html" class="flex items-center justify-between gap-gutter-md px-gutter-md py-gutter-sm rounded text-on-secondary-container hover:bg-navy-surface font-label text-label-lg transition-colors duration-state-change">
+          <span class="flex items-center gap-gutter-md">
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">account_balance_wallet</span>
+            <span data-design-text-token="label-lg">فودافون كاش - 18 خط</span>
+          </span>
+          <span class="px-gutter-sm py-gutter-xs rounded-full bg-navy-surface text-on-secondary-container font-mono text-mono-sm" data-design-text-token="mono-sm">18</span>
+        </a>
+        <a href="../chargers-cables/ChargersCablesInventory.html" class="flex items-center gap-gutter-md px-gutter-md py-gutter-sm rounded text-on-secondary-container hover:bg-navy-surface font-label text-label-lg transition-colors duration-state-change">
+          <span class="material-symbols-outlined text-title-md" aria-hidden="true">cable</span>
+          <span data-design-text-token="label-lg">مخزون الشواحن والوصلات</span>
+        </a>
+        <a href="../mobile-phones/MobilePhonesSales.html" class="flex items-center gap-gutter-md px-gutter-md py-gutter-sm rounded text-on-secondary-container hover:bg-navy-surface font-label text-label-lg transition-colors duration-state-change">
+          <span class="material-symbols-outlined text-title-md" aria-hidden="true">smartphone</span>
+          <span data-design-text-token="label-lg">مبيعات التليفونات</span>
+        </a>
+        <a href="../headphones-earphones/HeadphonesEarphones.html" class="flex items-center gap-gutter-md px-gutter-md py-gutter-sm rounded text-on-secondary-container hover:bg-navy-surface font-label text-label-lg transition-colors duration-state-change">
+          <span class="material-symbols-outlined text-title-md" aria-hidden="true">headphones</span>
+          <span data-design-text-token="label-lg">قسم السماعات</span>
+        </a>
+        <a href="../speakers/SpeakersInventory.html" class="flex items-center gap-gutter-md px-gutter-md py-gutter-sm rounded text-on-secondary-container hover:bg-navy-surface font-label text-label-lg transition-colors duration-state-change">
+          <span class="material-symbols-outlined text-title-md" aria-hidden="true">speaker</span>
+          <span data-design-text-token="label-lg">قسم الصبات</span>
+        </a>
+      </nav>
+
+      <div class="p-gutter-md border-t border-navy-surface">
+        <div class="p-gutter-md rounded bg-navy-surface flex flex-col gap-gutter-xs">
+          <p class="font-label text-label-sm text-on-secondary" data-design-text-token="label-sm">حالة النظام: فارغ وجاهز</p>
+          <p class="font-body text-body-sm text-outline" data-design-text-token="body-sm">الماسح الضوئي متصل وجاهز للإدخال</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="flex-1 flex flex-col min-w-0">
+      <!-- Persistent Sticky Global Barcode Scanner Header -->
+      <header class="sticky top-0 z-20 bg-deep-navy text-on-secondary border-b border-navy-surface px-gutter-lg py-gutter-md flex flex-wrap items-center justify-between gap-gutter-md">
+        <div class="flex items-center gap-gutter-md">
+          <h1 class="font-headline text-headline-md text-on-secondary" data-design-text-token="headline-md">الإدارة ولوحة التحكم الرئيسية</h1>
+        </div>
+
+        <form id="global-barcode-form" class="flex items-center gap-gutter-sm flex-1 max-w-xl" onsubmit="handleGlobalBarcode(event)">
+          <div class="relative flex-1 flex items-center">
+            <span class="material-symbols-outlined absolute right-3 text-royal-blue-bright text-title-md pointer-events-none" aria-hidden="true">barcode_scanner</span>
+            <input id="global-barcode-input" type="text" dir="ltr" placeholder="إدخال / مسح الباركود للبيع أو الإضافة..." class="w-full rounded border border-navy-surface bg-navy-surface pr-10 pl-gutter-md py-gutter-sm font-mono text-mono-md text-on-secondary placeholder:text-outline placeholder:text-right focus:border-royal-blue-bright focus:ring-2 focus:ring-royal-blue-bright/30 focus:outline-none">
+          </div>
+          <button data-component-id="button-primary" data-component-type="button" data-component-variant="primary" type="submit" class="inline-flex items-center justify-center gap-gutter-xs px-gutter-md py-gutter-sm rounded bg-primary text-on-primary font-label text-label-lg hover:bg-royal-blue-bright transition-colors duration-state-change shrink-0">
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">qr_code_scanner</span>
+            <span data-design-text-token="label-lg">مسح / بيع</span>
+          </button>
+        </form>
+      </header>
+
+      <main class="flex-1 p-gutter-lg flex flex-col gap-gutter-lg">
+        <!-- Page Action Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-gutter-md">
+          <div>
+            <h2 class="font-headline text-headline-sm text-on-surface" data-design-text-token="headline-sm">الملخص المالي اليومي</h2>
+            <p class="font-body text-body-sm text-on-surface-variant" data-design-text-token="body-sm">جميع القيم تبدأ من الصفر وتُحدَّث تلقائياً مع كل عملية بيع أو تسجيل مخزون.</p>
+          </div>
+          <button data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" type="button" onclick="openUserModal()" class="inline-flex items-center justify-center gap-gutter-sm px-gutter-md py-gutter-sm rounded bg-primary text-on-primary font-label text-label-lg hover:bg-royal-blue-bright transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-title-md" aria-hidden="true">add</span>
+            <span data-design-text-token="label-lg">+ إضافة جديد</span>
+          </button>
+        </div>
+
+        <!-- 4 Financial Summary Cards (Initialized at 0.00) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter-md items-stretch" aria-label="المؤشرات المالية">
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-surface-container-lowest border border-outline rounded-md p-gutter-lg flex flex-col justify-between gap-gutter-sm">
+            <header class="flex items-center justify-between gap-gutter-sm">
+              <span class="font-label text-label-lg text-on-surface-variant" data-design-text-token="label-lg">إجمالي المبيعات النقدية</span>
+              <span class="material-symbols-outlined text-primary text-headline-md" aria-hidden="true">payments</span>
+            </header>
+            <div class="flex items-baseline gap-gutter-xs">
+              <span id="stat-cash-sales" class="font-mono text-headline-lg text-on-surface tabular-nums" dir="ltr" data-design-text-token="headline-lg">0.00</span>
+              <span class="font-body text-body-sm text-on-surface-variant" data-design-text-token="body-sm">ج.م</span>
+            </div>
+          </article>
+
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-surface-container-lowest border border-outline rounded-md p-gutter-lg flex flex-col justify-between gap-gutter-sm">
+            <header class="flex items-center justify-between gap-gutter-sm">
+              <span class="font-label text-label-lg text-on-surface-variant" data-design-text-token="label-lg">رصيد فودافون كاش (18 خط)</span>
+              <span class="material-symbols-outlined text-primary text-headline-md" aria-hidden="true">account_balance_wallet</span>
+            </header>
+            <div class="flex items-baseline gap-gutter-xs">
+              <span id="stat-vf-balance" class="font-mono text-headline-lg text-on-surface tabular-nums" dir="ltr" data-design-text-token="headline-lg">0.00</span>
+              <span class="font-body text-body-sm text-on-surface-variant" data-design-text-token="body-sm">ج.م</span>
+            </div>
+          </article>
+
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-surface-container-lowest border border-outline rounded-md p-gutter-lg flex flex-col justify-between gap-gutter-sm">
+            <header class="flex items-center justify-between gap-gutter-sm">
+              <span class="font-label text-label-lg text-on-surface-variant" data-design-text-token="label-lg">إجمالي قطع المخزون</span>
+              <span class="material-symbols-outlined text-primary text-headline-md" aria-hidden="true">inventory_2</span>
+            </header>
+            <div class="flex items-baseline gap-gutter-xs">
+              <span id="stat-inventory-count" class="font-mono text-headline-lg text-on-surface tabular-nums" dir="ltr" data-design-text-token="headline-lg">0</span>
+              <span class="font-body text-body-sm text-on-surface-variant" data-design-text-token="body-sm">قطعة</span>
+            </div>
+          </article>
+
+          <article data-component-id="card-outlined" data-component-type="card" data-component-variant="outlined" class="bg-surface-container-lowest border border-outline rounded-md p-gutter-lg flex flex-col justify-between gap-gutter-sm">
+            <header class="flex items-center justify-between gap-gutter-sm">
+              <span class="font-label text-label-lg text-on-surface-variant" data-design-text-token="label-lg">صافي الربح اليومي</span>
+              <span class="material-symbols-outlined text-success text-headline-md" aria-hidden="true">trending_up</span>
+            </header>
+            <div class="flex items-baseline gap-gutter-xs">
+              <span id="stat-net-profit" class="font-mono text-headline-lg text-on-surface tabular-nums" dir="ltr" data-design-text-token="headline-lg">0.00</span>
+              <span class="font-body text-body-sm text-on-surface-variant" data-design-text-token="body-sm">ج.م</span>
+            </div>
+          </article>
+        </section>
+
+        <!-- Quick POS Barcode Checkout Section -->
+        <section class="bg-surface-container-lowest border border-outline rounded-md p-gutter-lg flex flex-col gap-gutter-md">
+          <div class="flex flex-wrap items-center justify-between gap-gutter-md border-b border-outline-variant pb-gutter-md">
+            <div>
+              <h2 class="font-headline text-headline-sm text-on-surface" data-design-text-token="headline-sm">نقطة البيع السريع بالباركود (Quick POS Checkout)</h2>
+              <p class="font-body text-body-sm text-on-surface-variant" data-design-text-token="body-sm">امسح باركود أي صنف من أي قسم لخصمه من المخزون وإضافته للفاتورة مباشرة.</p>
+            </div>
+            <div class="flex items-center gap-gutter-md">
+              <div class="flex items-baseline gap-gutter-xs px-gutter-md py-gutter-xs rounded bg-surface-container-low border border-outline-variant">
+                <span class="font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">إجمالي الفاتورة:</span>
+                <span id="pos-total" class="font-mono text-headline-md text-primary tabular-nums" dir="ltr" data-design-text-token="headline-md">0.00</span>
+                <span class="font-body text-body-sm text-on-surface-variant" data-design-text-token="body-sm">ج.م</span>
+              </div>
+              <button type="button" onclick="completePosSale()" class="inline-flex items-center gap-gutter-xs px-gutter-md py-gutter-sm rounded bg-primary text-on-primary font-label text-label-lg hover:bg-royal-blue-bright transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-title-md" aria-hidden="true">receipt_long</span>
+                <span data-design-text-token="label-lg">إتمام البيع</span>
+              </button>
+            </div>
+          </div>
+
+          <form onsubmit="addBarcodeToPosCart(event)" class="grid grid-cols-1 md:grid-cols-4 gap-gutter-md items-end">
+            <label class="flex flex-col gap-gutter-xs md:col-span-2">
+              <span class="font-label text-label-sm text-on-surface" data-design-text-token="label-sm">باركود الصنف</span>
+              <input id="pos-barcode-input" type="text" dir="ltr" placeholder="امسح الباركود هنا..." class="w-full rounded border border-outline bg-surface-container-lowest px-gutter-md py-gutter-sm font-mono text-mono-md text-on-surface placeholder:text-right focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none">
+            </label>
+            <label class="flex flex-col gap-gutter-xs">
+              <span class="font-label text-label-sm text-on-surface" data-design-text-token="label-sm">السعر (ج.م)</span>
+              <input id="pos-price-input" type="number" step="0.01" min="0" dir="ltr" placeholder="0.00" class="w-full rounded border border-outline bg-surface-container-lowest px-gutter-md py-gutter-sm font-mono text-mono-md text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none">
+            </label>
+            <button type="submit" class="inline-flex items-center justify-center gap-gutter-xs px-gutter-md py-gutter-sm rounded bg-secondary text-on-secondary font-label text-label-lg hover:bg-navy-surface transition-colors duration-state-change">
+              <span class="material-symbols-outlined text-title-md" aria-hidden="true">add_shopping_cart</span>
+              <span data-design-text-token="label-lg">إضافة للفاتورة</span>
+            </button>
+          </form>
+
+          <div data-component-id="table-standard" data-component-type="table" data-component-variant="standard" class="bg-surface-container-lowest border border-outline rounded-md overflow-hidden">
+            <table class="w-full text-right border-collapse">
+              <thead class="bg-surface-container-low border-b border-outline">
+                <tr>
+                  <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">الباركود</th>
+                  <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">الصنف / القسم</th>
+                  <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">الكمية</th>
+                  <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">السعر (ج.م)</th>
+                  <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="pos-cart-body">
+                <tr>
+                  <td colspan="5" class="px-gutter-lg py-gutter-xl text-center">
+                    <div class="flex flex-col items-center gap-gutter-xs">
+                      <span class="material-symbols-outlined text-headline-lg text-outline" aria-hidden="true">shopping_cart</span>
+                      <p class="font-headline text-title-md text-on-surface" data-design-text-token="title-md">سلة البيع السريع فارغة</p>
+                      <p class="font-body text-body-sm text-on-surface-variant" data-design-text-token="body-sm">امسح باركود الصنف أعلاه لبدء فاتورة جديدة.</p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Manage Categories & User Permissions -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-lg items-stretch">
+          <!-- Categories Management -->
+          <div class="bg-surface-container-lowest border border-outline rounded-md p-gutter-lg flex flex-col gap-gutter-md">
+            <div class="flex items-center justify-between gap-gutter-sm">
+              <h2 class="font-headline text-headline-sm text-on-surface" data-design-text-token="headline-sm">إدارة الأقسام والفئات</h2>
+              <button type="button" onclick="openCategoryModal()" class="inline-flex items-center gap-gutter-xs px-gutter-sm py-gutter-xs rounded bg-primary text-on-primary font-label text-label-sm hover:bg-royal-blue-bright transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-body-md" aria-hidden="true">add</span>
+                <span data-design-text-token="label-sm">+ إضافة جديد</span>
+              </button>
+            </div>
+            <div class="border border-outline rounded-md overflow-hidden flex-1">
+              <table class="w-full text-right border-collapse">
+                <thead class="bg-surface-container-low border-b border-outline">
+                  <tr>
+                    <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">اسم القسم</th>
+                    <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">الإجراءات</th>
+                  </tr>
+                </thead>
+                <tbody id="categories-body">
+                  <tr>
+                    <td colspan="2" class="px-gutter-md py-gutter-lg text-center font-body text-body-sm text-on-surface-variant" data-design-text-token="body-sm">
+                      لا توجد أقسام مخصصة مضافة حالياً. اضغط &#34;+ إضافة جديد&#34; لإضافة قسم.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- User Permissions Management -->
+          <div class="bg-surface-container-lowest border border-outline rounded-md p-gutter-lg flex flex-col gap-gutter-md">
+            <div class="flex items-center justify-between gap-gutter-sm">
+              <h2 class="font-headline text-headline-sm text-on-surface" data-design-text-token="headline-sm">صلاحيات المستخدمين</h2>
+              <button type="button" onclick="openUserModal()" class="inline-flex items-center gap-gutter-xs px-gutter-sm py-gutter-xs rounded bg-primary text-on-primary font-label text-label-sm hover:bg-royal-blue-bright transition-colors duration-state-change">
+                <span class="material-symbols-outlined text-body-md" aria-hidden="true">add</span>
+                <span data-design-text-token="label-sm">+ إضافة جديد</span>
+              </button>
+            </div>
+            <div class="border border-outline rounded-md overflow-hidden flex-1">
+              <table class="w-full text-right border-collapse">
+                <thead class="bg-surface-container-low border-b border-outline">
+                  <tr>
+                    <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">المستخدم</th>
+                    <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">الصلاحية</th>
+                    <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-on-surface-variant" data-design-text-token="label-sm">الإجراءات</th>
+                  </tr>
+                </thead>
+                <tbody id="users-body">
+                  <tr>
+                    <td colspan="3" class="px-gutter-md py-gutter-lg text-center font-body text-body-sm text-on-surface-variant" data-design-text-token="body-sm">
+                      لا يوجد مستخدمون مسجلون حالياً. اضغط &#34;+ إضافة جديد&#34; لإضافة كاشير أو مشرف.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add/Edit User Modal -->
+  <dialog id="user-modal" data-component-id="modal-standard" data-component-type="modal" data-component-variant="standard" class="rounded-lg bg-surface-container-lowest border border-outline p-0 w-full max-w-md backdrop:bg-deep-navy/50">
+    <form onsubmit="saveUser(event)">
+      <header class="flex items-center justify-between px-gutter-lg py-gutter-md border-b border-outline-variant">
+        <h3 id="user-modal-title" class="font-headline text-headline-sm text-on-surface" data-design-text-token="headline-sm">إضافة مستخدم جديد</h3>
+        <button type="button" onclick="document.getElementById(&#39;user-modal&#39;).close()" aria-label="إغلاق" class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low">
+          <span class="material-symbols-outlined text-title-md">close</span>
+        </button>
+      </header>
+      <div class="p-gutter-lg flex flex-col gap-gutter-md">
+        <input type="hidden" id="user-edit-index" value="-1">
+        <label class="flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-sm text-on-surface" data-design-text-token="label-sm">اسم المستخدم</span>
+          <input id="user-name-input" type="text" required placeholder="مثال: أحمد محمد" class="w-full rounded border border-outline px-gutter-md py-gutter-sm font-body text-body-md focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+        </label>
+        <label class="flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-sm text-on-surface" data-design-text-token="label-sm">الصلاحية</span>
+          <select id="user-role-input" class="w-full rounded border border-outline px-gutter-md py-gutter-sm font-body text-body-md focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+            <option value="مدير النظام">مدير النظام (صلاحية كاملة)</option>
+            <option value="كاشير مبيعات">كاشير مبيعات</option>
+            <option value="مسؤول فودافون كاش">مسؤول فودافون كاش</option>
+            <option value="أمين مخزن">أمين مخزن</option>
+          </select>
+        </label>
+      </div>
+      <footer class="flex items-center justify-end gap-gutter-sm px-gutter-lg py-gutter-md border-t border-outline-variant bg-surface-container-low">
+        <button type="button" onclick="document.getElementById(&#39;user-modal&#39;).close()" class="px-gutter-md py-gutter-sm rounded border border-outline bg-surface-container-lowest text-on-surface font-label text-label-lg" data-design-text-token="label-lg">إلغاء</button>
+        <button type="submit" class="px-gutter-md py-gutter-sm rounded bg-primary text-on-primary font-label text-label-lg" data-design-text-token="label-lg">حفظ</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- Add/Edit Category Modal -->
+  <dialog id="category-modal" data-component-id="modal-standard" data-component-type="modal" data-component-variant="standard" class="rounded-lg bg-surface-container-lowest border border-outline p-0 w-full max-w-md backdrop:bg-deep-navy/50">
+    <form onsubmit="saveCategory(event)">
+      <header class="flex items-center justify-between px-gutter-lg py-gutter-md border-b border-outline-variant">
+        <h3 id="category-modal-title" class="font-headline text-headline-sm text-on-surface" data-design-text-token="headline-sm">إضافة قسم جديد</h3>
+        <button type="button" onclick="document.getElementById(&#39;category-modal&#39;).close()" aria-label="إغلاق" class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low">
+          <span class="material-symbols-outlined text-title-md">close</span>
+        </button>
+      </header>
+      <div class="p-gutter-lg flex flex-col gap-gutter-md">
+        <input type="hidden" id="cat-edit-index" value="-1">
+        <label class="flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-sm text-on-surface" data-design-text-token="label-sm">اسم القسم / الفئة</span>
+          <input id="cat-name-input" type="text" required placeholder="مثال: جرابات واسكرينات" class="w-full rounded border border-outline px-gutter-md py-gutter-sm font-body text-body-md focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+        </label>
+      </div>
+      <footer class="flex items-center justify-end gap-gutter-sm px-gutter-lg py-gutter-md border-t border-outline-variant bg-surface-container-low">
+        <button type="button" onclick="document.getElementById(&#39;category-modal&#39;).close()" class="px-gutter-md py-gutter-sm rounded border border-outline bg-surface-container-lowest text-on-surface font-label text-label-lg" data-design-text-token="label-lg">إلغاء</button>
+        <button type="submit" class="px-gutter-md py-gutter-sm rounded bg-primary text-on-primary font-label text-label-lg" data-design-text-token="label-lg">حفظ</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- Delete Confirmation Dialog -->
+  <dialog id="confirm-delete-modal" role="alertdialog" data-component-id="modal-alert" data-component-type="modal" data-component-variant="alert" class="rounded-lg bg-surface-container-lowest border border-outline p-0 w-full max-w-md backdrop:bg-deep-navy/50">
+    <header class="px-gutter-lg py-gutter-md border-b border-outline-variant">
+      <h3 class="font-headline text-headline-sm text-on-surface" data-design-text-token="headline-sm">تأكيد الحذف</h3>
+    </header>
+    <div class="p-gutter-lg">
+      <p id="confirm-delete-msg" class="font-body text-body-md text-on-surface-variant" data-design-text-token="body-md">هل أنت متأكد من حذف هذا السجل نهائياً؟</p>
+    </div>
+    <footer class="flex items-center justify-end gap-gutter-sm px-gutter-lg py-gutter-md border-t border-outline-variant bg-surface-container-low">
+      <button type="button" onclick="document.getElementById(&#39;confirm-delete-modal&#39;).close()" class="px-gutter-md py-gutter-sm rounded border border-outline bg-surface-container-lowest text-on-surface font-label text-label-lg" data-design-text-token="label-lg">تراجع</button>
+      <button type="button" id="confirm-delete-btn" class="px-gutter-md py-gutter-sm rounded bg-error text-on-error font-label text-label-lg" data-design-text-token="label-lg">نعم، حذف</button>
+    </footer>
+  </dialog>
+
+  <script>
+    let posCart = [];
+    let categories = [];
+    let users = [];
+    let cashSales = 0;
+
+    function handleGlobalBarcode(e) {
+      e.preventDefault();
+      const input = document.getElementById('global-barcode-input');
+      const code = input.value.trim();
+      if (!code) return;
+      document.getElementById('pos-barcode-input').value = code;
+      document.getElementById('pos-price-input').focus();
+      input.value = '';
+    }
+
+    function addBarcodeToPosCart(e) {
+      e.preventDefault();
+      const code = document.getElementById('pos-barcode-input').value.trim();
+      const price = parseFloat(document.getElementById('pos-price-input').value) || 0;
+      if (!code) return;
+      posCart.push({ barcode: code, name: 'صنف باركود (' + code + ')', qty: 1, price });
+      document.getElementById('pos-barcode-input').value = '';
+      document.getElementById('pos-price-input').value = '';
+      renderPosCart();
+    }
+
+    function renderPosCart() {
+      const tbody = document.getElementById('pos-cart-body');
+      const totalEl = document.getElementById('pos-total');
+      if (posCart.length === 0) {
+        totalEl.textContent = '0.00';
+        tbody.innerHTML = '<tr><td colspan="5" class="px-gutter-lg py-gutter-xl text-center"><div class="flex flex-col items-center gap-gutter-xs"><span class="material-symbols-outlined text-headline-lg text-outline" aria-hidden="true">shopping_cart</span><p class="font-headline text-title-md text-on-surface">سلة البيع السريع فارغة</p><p class="font-body text-body-sm text-on-surface-variant">امسح باركود الصنف أعلاه لبدء فاتورة جديدة.</p></div></td></tr>';
+        return;
+      }
+      let total = 0;
+      tbody.innerHTML = posCart.map((item, idx) => {
+        total += item.price * item.qty;
+        return `<tr class="border-b border-outline-variant last:border-b-0">
+          <td class="px-gutter-md py-gutter-sm font-mono text-mono-sm tabular-nums" dir="ltr">${item.barcode}</td>
+          <td class="px-gutter-md py-gutter-sm font-body text-body-md">${item.name}</td>
+          <td class="px-gutter-md py-gutter-sm font-mono text-mono-sm tabular-nums">${item.qty}</td>
+          <td class="px-gutter-md py-gutter-sm font-mono text-mono-sm tabular-nums" dir="ltr">${item.price.toFixed(2)}</td>
+          <td class="px-gutter-md py-gutter-sm">
+            <button type="button" onclick="confirmDelete(() => { posCart.splice(${idx}, 1); renderPosCart(); })" class="px-gutter-sm py-gutter-xs rounded border border-outline text-error font-label text-label-sm hover:bg-error-container">حذف</button>
+          </td>
+        </tr>`;
+      }).join('');
+      totalEl.textContent = total.toFixed(2);
+    }
+
+    function completePosSale() {
+      if (posCart.length === 0) return;
+      const saleTotal = posCart.reduce((s, i) => s + i.price * i.qty, 0);
+      cashSales += saleTotal;
+      document.getElementById('stat-cash-sales').textContent = cashSales.toFixed(2);
+      document.getElementById('stat-net-profit').textContent = cashSales.toFixed(2);
+      posCart = [];
+      renderPosCart();
+    }
+
+    function openCategoryModal(idx = -1) {
+      document.getElementById('cat-edit-index').value = idx;
+      document.getElementById('cat-name-input').value = idx >= 0 ? categories[idx].name : '';
+      document.getElementById('category-modal-title').textContent = idx >= 0 ? 'تعديل القسم' : 'إضافة قسم جديد';
+      document.getElementById('category-modal').showModal();
+    }
+
+    function saveCategory(e) {
+      e.preventDefault();
+      const idx = parseInt(document.getElementById('cat-edit-index').value, 10);
+      const name = document.getElementById('cat-name-input').value.trim();
+      if (!name) return;
+      if (idx >= 0) categories[idx].name = name;
+      else categories.push({ name });
+      document.getElementById('category-modal').close();
+      renderCategories();
+    }
+
+    function renderCategories() {
+      const tbody = document.getElementById('categories-body');
+      if (categories.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="2" class="px-gutter-md py-gutter-lg text-center font-body text-body-sm text-on-surface-variant">لا توجد أقسام مخصصة مضافة حالياً. اضغط "+ إضافة جديد" لإضافة قسم.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = categories.map((c, idx) => `<tr class="border-b border-outline-variant last:border-b-0">
+        <td class="px-gutter-md py-gutter-sm font-body text-body-md">${c.name}</td>
+        <td class="px-gutter-md py-gutter-sm flex items-center gap-gutter-xs">
+          <button type="button" onclick="openCategoryModal(${idx})" class="px-gutter-sm py-gutter-xs rounded border border-outline font-label text-label-sm hover:bg-surface-container-low">تعديل</button>
+          <button type="button" onclick="confirmDelete(() => { categories.splice(${idx}, 1); renderCategories(); })" class="px-gutter-sm py-gutter-xs rounded border border-outline text-error font-label text-label-sm hover:bg-error-container">حذف</button>
+        </td>
+      </tr>`).join('');
+    }
+
+    function openUserModal(idx = -1) {
+      document.getElementById('user-edit-index').value = idx;
+      document.getElementById('user-name-input').value = idx >= 0 ? users[idx].name : '';
+      document.getElementById('user-role-input').value = idx >= 0 ? users[idx].role : 'كاشير مبيعات';
+      document.getElementById('user-modal-title').textContent = idx >= 0 ? 'تعديل المستخدم' : 'إضافة مستخدم جديد';
+      document.getElementById('user-modal').showModal();
+    }
+
+    function saveUser(e) {
+      e.preventDefault();
+      const idx = parseInt(document.getElementById('user-edit-index').value, 10);
+      const name = document.getElementById('user-name-input').value.trim();
+      const role = document.getElementById('user-role-input').value;
+      if (!name) return;
+      if (idx >= 0) users[idx] = { name, role };
+      else users.push({ name, role });
+      document.getElementById('user-modal').close();
+      renderUsers();
+    }
+
+    function renderUsers() {
+      const tbody = document.getElementById('users-body');
+      if (users.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" class="px-gutter-md py-gutter-lg text-center font-body text-body-sm text-on-surface-variant">لا يوجد مستخدمون مسجلون حالياً. اضغط "+ إضافة جديد" لإضافة كاشير أو مشرف.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = users.map((u, idx) => `<tr class="border-b border-outline-variant last:border-b-0">
+        <td class="px-gutter-md py-gutter-sm font-body text-body-md">${u.name}</td>
+        <td class="px-gutter-md py-gutter-sm font-label text-label-sm text-primary">${u.role}</td>
+        <td class="px-gutter-md py-gutter-sm flex items-center gap-gutter-xs">
+          <button type="button" onclick="openUserModal(${idx})" class="px-gutter-sm py-gutter-xs rounded border border-outline font-label text-label-sm hover:bg-surface-container-low">تعديل</button>
+          <button type="button" onclick="confirmDelete(() => { users.splice(${idx}, 1); renderUsers(); })" class="px-gutter-sm py-gutter-xs rounded border border-outline text-error font-label text-label-sm hover:bg-error-container">حذف</button>
+        </td>
+      </tr>`).join('');
+    }
+
+    function confirmDelete(onConfirm) {
+      const dialog = document.getElementById('confirm-delete-modal');
+      const btn = document.getElementById('confirm-delete-btn');
+      btn.onclick = () => {
+        onConfirm();
+        dialog.close();
+      };
+      dialog.showModal();
+    }
+  </script>
+
+
+</body></html>

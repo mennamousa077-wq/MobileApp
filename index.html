@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نظام إدارة سنترال وإكسسوارات المحمول | POS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Right-Aligned RTL Sidebar -->
+    <aside id="sidebar" class="sidebar" aria-label="القائمة الرئيسية">
+      <div class="sidebar-brand">
+        <div class="brand-info">
+          <div class="brand-logo">POS</div>
+          <div>
+            <h1 class="brand-title">سنترال وإكسسوارات</h1>
+            <p class="brand-subtitle">نظام نقاط البيع والمخزون</p>
+          </div>
+        </div>
+        <button id="sidebarCloseBtn" class="sidebar-close-btn" type="button" aria-label="إغلاق القائمة">×</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">الأقسام الرئيسية</div>
+
+        <button class="nav-btn active" type="button" data-route="dashboard">
+          <span class="nav-btn-main">
+            <span class="nav-icon">📊</span>
+            <span>الإدارة</span>
+          </span>
+        </button>
+
+        <button id="vfToggleBtn" class="nav-btn" type="button" data-route="vf-hub">
+          <span class="nav-btn-main">
+            <span class="nav-icon">📱</span>
+            <span>فودافون كاش - 18 خط</span>
+          </span>
+          <span class="nav-badge" id="vfToggleArrow">18</span>
+        </button>
+
+        <div id="vfSubmenu" class="vf-submenu" aria-label="خطوط فودافون كاش من 1 إلى 18"></div>
+
+        <button class="nav-btn" type="button" data-route="chargers">
+          <span class="nav-btn-main">
+            <span class="nav-icon">🔌</span>
+            <span>مخزون الشواحن والوصلات</span>
+          </span>
+          <span class="nav-badge" id="badge-chargers">0</span>
+        </button>
+
+        <button class="nav-btn" type="button" data-route="phones">
+          <span class="nav-btn-main">
+            <span class="nav-icon">📲</span>
+            <span>مبيعات التليفونات</span>
+          </span>
+          <span class="nav-badge" id="badge-phones">0</span>
+        </button>
+
+        <button class="nav-btn" type="button" data-route="headphones">
+          <span class="nav-btn-main">
+            <span class="nav-icon">🎧</span>
+            <span>قسم السماعات</span>
+          </span>
+          <span class="nav-badge" id="badge-headphones">0</span>
+        </button>
+
+        <button class="nav-btn" type="button" data-route="speakers">
+          <span class="nav-btn-main">
+            <span class="nav-icon">🔊</span>
+            <span>قسم الصبات</span>
+          </span>
+          <span class="nav-badge" id="badge-speakers">0</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div>
+          <span id="fbStatusDot" class="status-dot"></span>
+          <span id="fbStatusText">جاري الاتصال بـ Firebase...</span>
+        </div>
+        <span class="num">v1.0</span>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="main-wrapper">
+      <!-- Persistent Top Header with Global Barcode Scanner -->
+      <header class="top-header">
+        <div class="header-right">
+          <button id="menuToggleBtn" class="menu-toggle-btn" type="button" aria-label="فتح القائمة">☰</button>
+          <div class="page-heading-group">
+            <h2 id="pageTitle">الإدارة واللوحة الرئيسية</h2>
+            <p id="pageSubtitle">ملخص المبيعات والمخزون وإدارة النظام</p>
+          </div>
+        </div>
+
+        <form id="globalBarcodeForm" class="global-barcode-form" autocomplete="off">
+          <select id="globalBarcodeMode" class="barcode-mode-select" aria-label="وضع مسح الباركود">
+            <option value="sell">بيع سريع بالباركود</option>
+            <option value="register">تسجيل صنف جديد</option>
+          </select>
+          <div class="barcode-input-wrap">
+            <span aria-hidden="true">║▌║</span>
+            <input
+              id="globalBarcodeInput"
+              class="barcode-input num"
+              type="text"
+              placeholder="إدخال / مسح الباركود ثم اضغط Enter..."
+              aria-label="إدخال أو مسح الباركود"
+            />
+          </div>
+          <button class="btn btn-primary btn-sm" type="submit">تنفيذ</button>
+        </form>
+      </header>
+
+      <!-- Dynamic Page Container -->
+      <main id="pageContent" class="page-content"></main>
+    </div>
+  </div>
+
+  <!-- Universal Add / Edit Modal -->
+  <div id="appModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modalTitle">إضافة جديد</h3>
+        <button id="modalCloseBtn" class="modal-close" type="button" aria-label="إغلاق">×</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Confirmation Dialog -->
+  <div id="confirmModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="modal-dialog sm">
+      <div class="modal-header">
+        <h3 id="confirmTitle">تأكيد الحذف</h3>
+        <button id="confirmCloseBtn" class="modal-close" type="button" aria-label="إغلاق">×</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmMessage" style="margin: 0; color: var(--text-secondary);"></p>
+      </div>
+      <div class="modal-footer">
+        <button id="confirmCancelBtn" class="btn btn-secondary" type="button">إلغاء</button>
+        <button id="confirmOkBtn" class="btn btn-danger" type="button">تأكيد الحذف</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
