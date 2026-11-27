@@ -2,6 +2,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebas
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-analytics.js";
 import {
   getFirestore,
+  initializeFirestore,
+  persistentLocalCache,
+  persistentMultipleTabManager,
   collection,
   doc,
   addDoc,
@@ -35,7 +38,17 @@ try {
   // Analytics may be blocked in certain environments or local file contexts
 }
 
-export const db = getFirestore(app);
+let db;
+try {
+  db = initializeFirestore(app, {
+    localCache: persistentLocalCache({
+      tabManager: persistentMultipleTabManager()
+    })
+  });
+} catch {
+  db = getFirestore(app);
+}
+export { db };
 
 // Collection references
 export const COLLECTIONS = {
